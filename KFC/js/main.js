@@ -40,8 +40,9 @@ $(function () {
         count++;
     });
 
+    // 修改后的点击事件
     $(document).on('click', '.ok', function (e) {
-        e.preventDefault();
-        $.magnificPopup.close();
+        $.magnificPopup.close(); // 关闭模态框
+        // 不需要 e.preventDefault()，让 <a> 标签自动跳转
     });
 });
