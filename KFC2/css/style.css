@@ -1,0 +1,162 @@
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    color: #333;
+    text-align: center;
+}
+
+.header {
+    background-color: #E31837;
+    padding: 20px;
+    color: white;
+}
+
+.header img {
+    width: 150px;
+    margin: 10px 0;
+}
+
+.header h1 {
+    font-size: 28px;
+    margin: 10px 0;
+}
+
+.header p {
+    font-size: 16px;
+    margin: 5px 0;
+}
+
+.banner {
+    background-color: #FFD700;
+    padding: 10px;
+}
+
+.banner img {
+    width: 100%;
+    max-width: 800px;
+}
+
+.urgency {
+    color: #E31837;
+    font-weight: bold;
+    margin: 10px 0;
+}
+
+#voucher-count {
+    font-size: 1.2em;
+    display: inline-block;
+}
+
+#voucher-count.update {
+    animation: flash 0.5s;
+}
+
+@keyframes flash {
+    0% { opacity: 1; }
+    50% { opacity: 0.5; }
+    100% { opacity: 1; }
+}
+
+.container {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.question {
+    font-size: 22px;
+    margin: 20px 0;
+}
+
+.options {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.option-btn {
+    background-color: #E31837;
+    color: white;
+    border: none;
+    padding: 15px 30px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.1s;
+}
+
+.option-btn:hover {
+    background-color: #C4162A;
+}
+
+.option-btn:active {
+    transform: scale(0.98);
+}
+
+.feedback {
+    font-size: 18px;
+    color: #28A745;
+    margin: 20px 0;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+}
+
+.feedback.show {
+    opacity: 1;
+}
+
+.cta-btn {
+    background-color: #28A745;
+    color: white;
+    border: none;
+    padding: 15px 50px;
+    font-size: 18px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 20px auto;
+    text-decoration: none;
+    display: block;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+}
+
+.cta-btn.show {
+    opacity: 1;
+}
+
+.instructions {
+    font-size: 14px;
+    color: #666;
+    margin-top: 20px;
+}
+
+.hide {
+    display: none;
+}
+
+/* 媒体查询：手机端调整 */
+@media (max-width: 768px) {
+    .header img {
+        width: 100px;
+    }
+    .header h1 {
+        font-size: 24px;
+    }
+    .question {
+        font-size: 18px;
+    }
+    .option-btn {
+        padding: 10px 20px;
+        font-size: 14px;
+    }
+    .cta-btn {
+        padding: 12px 40px;
+        font-size: 16px;
+    }
+}
