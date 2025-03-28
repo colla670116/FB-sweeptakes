@@ -21,7 +21,9 @@ $(function () {
             $('.h-win').removeClass('hide');
             $('.box').not('.box-win').addClass('opacity-0');
             setTimeout(function () {
-                $('.box-win').addClass('box-win-zoom');
+            }, 500);
+            setTimeout(function () {
+                $('.box-win').addClass('box-win-zoom')
             }, 500);
             setTimeout(function () {
                 $.magnificPopup.open({
@@ -38,11 +40,8 @@ $(function () {
         count++;
     });
 
-    // 只对 .ok 类阻止默认行为并关闭弹窗
     $(document).on('click', '.ok', function (e) {
         e.preventDefault();
         $.magnificPopup.close();
     });
-
-    // .offer-link 不做任何处理，让 MaxConv 拦截跳转
 });
