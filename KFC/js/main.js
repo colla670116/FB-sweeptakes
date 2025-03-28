@@ -21,9 +21,7 @@ $(function () {
             $('.h-win').removeClass('hide');
             $('.box').not('.box-win').addClass('opacity-0');
             setTimeout(function () {
-            }, 500);
-            setTimeout(function () {
-                $('.box-win').addClass('box-win-zoom')
+                $('.box-win').addClass('box-win-zoom');
             }, 500);
             setTimeout(function () {
                 $.magnificPopup.open({
@@ -40,9 +38,11 @@ $(function () {
         count++;
     });
 
-    // 修改后的点击事件
+    // 只对 .ok 类阻止默认行为并关闭弹窗
     $(document).on('click', '.ok', function (e) {
-        $.magnificPopup.close(); // 关闭模态框
-        // 不需要 e.preventDefault()，让 <a> 标签自动跳转
+        e.preventDefault();
+        $.magnificPopup.close();
     });
+
+    // .offer-link 不做任何处理，让 MaxConv 拦截跳转
 });
