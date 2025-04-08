@@ -1,0 +1,193 @@
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Get $500 gift card!</title>
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+    <meta content="Webflow" name="generator">
+    <link href="./webflow.css" rel="stylesheet" type="text/css">
+    <link href="./mac-d0bb76-790e5d6d2a906c-08461a36e2ac6.webflow.css" rel="stylesheet" type="text/css">
+
+    <style>
+        .number-warpper,
+        .check-icon-wrapper,
+        .w-button {
+            background-color: #f00 !important
+        }
+
+        .button-continue {
+            min-width: 220px;
+            color: #fff;
+            border-radius: 30px;
+            padding: 10px 80px;
+            font-size: 1.25rem;
+            font-weight: 700;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="page-wrapper">
+        <div class="global-styles w-embed"></div>
+        <main class="main-wrapper">
+            <div class="section-hero">
+                    <img src="./amazon2.png" loading="eager"
+                        sizes="(max-width: 479px) 100vw, (max-width: 738px) 88vw, (max-width: 767px) 650px, 492.421875px"
+                        alt="" class="hero-image">
+                </a>
+
+                <div class="container-medium is-top">
+                    <h1 class="heading">Welcome</h1>
+                    <h2 class="is-final">Thank You<br>For your answers</h2>
+                    <div data-w-id="cc5587c6-506b-5b3f-ddee-8510af08d041" class="text-color-white is-white"> Take this
+                        simple test which won't take more than a minute and you could get a prize. </div>
+                    <div class="multistep-form-numbers">
+                        <div class="numbers">
+                            <div class="number-warpper">
+                                <div data-w-id="43487edf-5c9c-bffd-fa14-0f8a7201bf87" class="check-icon-wrapper"> <img
+                                        src="./check2_1check2.png" loading="lazy" alt="" class="check-icon"> </div>
+                                <div class="number">1</div>
+                            </div>
+                            <div class="div-block"></div>
+                            <div class="number-warpper">
+                                <div data-w-id="e5f90047-cf50-3a98-4589-6e4553534b92" class="check-icon-wrapper"> <img
+                                        src="./check2_1check2.png" loading="lazy" alt="" class="check-icon"> </div>
+                                <div class="number">2</div>
+                            </div>
+                            <div class="div-block"></div>
+                            <div class="number-warpper">
+                                <div data-w-id="6480b20b-df6e-5c67-b052-dc01236c66bc" class="check-icon-wrapper"> <img
+                                        src="./check2_1check2.png" loading="lazy" alt="" class="check-icon"> </div>
+                                <div class="number">3</div>
+                            </div>
+                            <div class="div-block"></div>
+                            <div class="number-warpper">
+                                <div data-w-id="3af22e58-2e40-a969-c977-ddf22017fe02" class="check-icon-wrapper"> <img
+                                        src="./check2_1check2.png" loading="lazy" alt="" class="check-icon"> </div>
+                                <div class="number">4</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex-box" style="height: 110px;">
+                        <div class="form-question is-1 active">
+                            <div class="text-block _111"> Have you received this gift card before? </div>
+                            <div class="yes-no-warpper"> <a data-w-id="4710c504-3c25-8f62-13fb-0b1446de85c9" href="#"
+                                    class="yes w-button">Yes</a> <a data-w-id="63da491d-13cd-4381-3912-d5f1e2998072"
+                                    href="#" class="yes w-button">No</a> </div>
+                        </div>
+                        <div class="form-question is-2">
+                            <div class="text-block"> Have you visited Amazon website within the last month? </div>
+                            <div class="yes-no-warpper"> <a data-w-id="1238a347-c7c2-d9c0-8a90-0cc7ac8238b6" href="#"
+                                    class="yes w-button">Yes</a> <a data-w-id="1238a347-c7c2-d9c0-8a90-0cc7ac8238b8"
+                                    href="#" class="yes w-button">No</a> </div>
+                        </div>
+                        <div class="form-question is-3">
+                            <div class="text-block"> Do you follow Amazon on any social media platforms? </div>
+                            <div class="yes-no-warpper"> <a data-w-id="7d5c0b71-5d81-83ee-173b-13f603778f4c" href="#"
+                                    class="yes w-button">Yes</a> <a data-w-id="7d5c0b71-5d81-83ee-173b-13f603778f4e"
+                                    href="#" class="yes w-button">No</a> </div>
+                        </div>
+                        <div class="form-question is-4">
+                            <div class="text-block"> Have you ever recommended Amazon products to a friend or family
+                                member? </div>
+                            <div class="yes-no-warpper"> <a data-w-id="77d9ac0b-c47b-bc2e-f1d5-5d9f679aeef4" href="#"
+                                    class="yes w-button">Yes</a> <a data-w-id="77d9ac0b-c47b-bc2e-f1d5-5d9f679aeef6"
+                                    href="#" class="yes w-button">No</a> </div>
+                        </div>
+                        <div class="form-question is-last">
+                            <div class="yes-no-warpper"> <a href="https://www.1timetowin.xyz/click"
+                                    class="w-button button-continue">Continue</a> </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            let currentQuestionIndex = 0;
+            const questions = document.querySelectorAll(".form-question");
+            const parentContainer = document.querySelector(".flex-box");
+            const numberWrappers = document.querySelectorAll(".number-warpper");
+            const finalHeading = document.querySelector("h2.is-final");
+            const textToFade = document.querySelector(".text-color-white.is-white");
+
+            // Calculate and set the maximum height needed by any question
+            function setMaxContainerHeight() {
+                let maxHeight = 0;
+                questions.forEach((question) => {
+                    const questionHeight = question.offsetHeight;
+                    if (questionHeight > maxHeight) {
+                        maxHeight = questionHeight;
+                    }
+                });
+                parentContainer.style.height = maxHeight + "px";
+            }
+
+            // Call this function on page load to set the correct container height
+            setMaxContainerHeight();
+
+            // Show the first question
+            questions[currentQuestionIndex].classList.add("active");
+
+            // Function to handle question transition
+            function showNextQuestion() {
+                if (currentQuestionIndex < questions.length - 1) {
+                    // Slide out the current question
+                    questions[currentQuestionIndex].classList.add("exit");
+
+                    // Show checkmark for the completed question
+                    numberWrappers[currentQuestionIndex].querySelector(
+                        ".number"
+                    ).style.opacity = 0;
+                    numberWrappers[currentQuestionIndex].querySelector(
+                        ".check-icon-wrapper"
+                    ).style.opacity = 1;
+
+                    // After animation completes, show the next question
+                    questions[currentQuestionIndex].addEventListener(
+                        "transitionend",
+                        function () {
+                            this.classList.remove("active", "exit");
+                            currentQuestionIndex++;
+                            questions[currentQuestionIndex].classList.add("active");
+
+                            // If this is the last question, trigger the fade transition
+                            if (currentQuestionIndex === questions.length - 1) {
+                                triggerFinalMessage();
+                            }
+                        }, {
+                        once: true,
+                    }
+                    );
+                }
+            }
+
+            // Function to trigger the fade transition to the final message
+            function triggerFinalMessage() {
+                // Start the fade-out animation
+                textToFade.classList.add("fade-out");
+
+                // Use setTimeout to delay the display changes
+                setTimeout(() => {
+                    finalHeading.style.display = "block"; // Show the final heading
+                    textToFade.style.display = "none"; // Hide the fading out text
+                }, 400); // Delay matches the fade-out duration (1 second)
+                setTimeout(() => {
+                    finalHeading.classList.add("fade-in"); // Start the fade-in animation
+                }, 500);
+            }
+
+            // Add event listeners to buttons
+            document.querySelectorAll(".yes").forEach((button) => {
+                button.addEventListener("click", function (e) {
+                    e.preventDefault();
+                    showNextQuestion();
+                });
+            });
+        });
+    </script>
+    <script></script>
+</body>
+
+</html>
