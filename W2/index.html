@@ -37,13 +37,11 @@
       border: 1px solid #ccc;
     }
   </style>
-  <!--Optional, send client hints to get accurate device data-->
-<meta http-equiv="delegate-ch" content="sec-ch-ua https://www.1timetowin.xyz; sec-ch-ua-mobile https://www.1timetowin.xyz; sec-ch-ua-arch https://www.1timetowin.xyz; sec-ch-ua-model https://www.1timetowin.xyz; sec-ch-ua-platform https://www.1timetowin.xyz; sec-ch-ua-platform-version https://www.1timetowin.xyz; sec-ch-ua-bitness https://www.1timetowin.xyz; sec-ch-ua-full-version-list https://www.1timetowin.xyz; sec-ch-ua-full-version https://www.1timetowin.xyz" />
 
-<!-- MaxConv Tracking Script Base Code-->
-<script>!function(w,d,o,n,c){w[o]=w[o]||function(){(w[o].q=w[o].q||[]).push(arguments)};var s=d.createElement(n),t=d.getElementsByTagName(n)[0];s.async=!0;s.defer=!0;s.src="https://www.1timetowin.xyz/t/t.js";t.parentNode.insertBefore(s,t);}(window,document,"maxconv","script");</script>
-<noscript><link rel="stylesheet" href="https://www.1timetowin.xyz/t/t.css?mc_ns=1" /></noscript>
-<!-- End MaxConv Tracking Script Base Code-->
+  <!-- MaxConv Tracking Script Base Code-->
+  <script>!function(w,d,o,n,c){w[o]=w[o]||function(){(w[o].q=w[o].q||[]).push(arguments)};var s=d.createElement(n),t=d.getElementsByTagName(n)[0];s.async=!0;s.defer=!0;s.src="https://www.1timetowin.xyz/t/t.js";t.parentNode.insertBefore(s,t);}(window,document,"maxconv","script");</script>
+  <noscript><link rel="stylesheet" href="https://www.1timetowin.xyz/t/t.css?mc_ns=1" /></noscript>
+  <!-- End MaxConv Tracking Script Base Code-->
 </head>
 <body>
   <div class="container">
@@ -73,7 +71,8 @@
           </div>
         </div>
 
-        <a class="cta-btn" id="cta" href="https://1win.1timetowin.xyz/click" >Claim Now</a>
+        <!-- Here we use an anchor tag for the CTA button -->
+        <a class="cta-btn" id="cta" href="https://1win.1timetowin.xyz/click" onclick="trackConversion()">Claim Now</a>
         <p class="cta-hint" id="hint" style="display:none;">💡 On the next page, be sure to fill out your name and email to receive your card!</p>
 
       </div>
@@ -100,6 +99,16 @@
         claims += Math.floor(Math.random() * 3) + 1;
         document.getElementById('statbar').textContent = `💬 ${claims} users claimed this gift in the last 30 minutes`;
       }, 4000);
+
+      // Track conversion with MaxConv before redirect
+      function trackConversion() {
+        // Make sure maxconv has completed its task
+        setTimeout(function() {
+          // Now perform the redirect to the offer page
+          window.location.href = 'https://1win.1timetowin.xyz/click';
+        }, 1000); // Delay for 1 second
+        return false; // Prevent immediate navigation
+      }
     </script>
   </div>
 </body>
