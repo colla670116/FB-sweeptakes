@@ -1,0 +1,205 @@
+/* base prize template FUPMKL */
+
+/* colors */
+.wm-blue {
+    background-color: #0071dc;
+}
+
+.wm-yellow {
+    background-color: #ffc220;
+}
+.ca-green {
+    background-color: #11a242;
+}
+
+.ca-black {
+    background-color: #111;
+}
+
+.pp-blue {
+    background-color: #11559d;
+}
+
+.pp-black {
+    background-color: #111;
+}
+
+.az-blue {
+    background-color: #232f3f;
+}
+
+.az-black {
+    background-color: #111;
+}
+
+.cc-red {
+    background-color: #e31836;
+}
+
+.cc-black {
+    background-color: #111;
+}
+
+/* end colors */
+
+/* components */
+.logo {
+    width:295px;
+    margin: 0px auto;
+    padding: 15px 0 15px 0;
+}
+
+.title {
+    color: #fff;
+    font-weight: 700;
+    font-size: 25px;
+}
+
+.subtitle {
+    color: #fff;
+    font-size: 18px;
+    margin:10px 0 10px 0;
+    padding: 0px;
+}
+
+.instructions {
+    color: #222;
+    font-size: 20px;
+    font-weight: 900;
+}
+
+.prize-container {
+    max-width: 340px;
+}
+
+.prize {
+    width:150px;
+    height:100px;
+    margin:15px 8px 15px 8px;
+    padding: 0px;
+    background:transparent url(wm1k.png) no-repeat center;
+    background-size: contain;
+    border: none;
+}
+
+.prize-ca {
+    width:130px;
+    height:83px;
+    margin:15px 8px 15px 8px;
+    padding: 0px;
+    background:transparent url(ca-card.png) no-repeat center;
+    background-size: contain;
+    border: none;
+}
+
+.prize-pp {
+    width:130px;
+    height:83px;
+    margin:15px 8px 15px 8px;
+    padding: 0px;
+    background:transparent url(pp-card.png) no-repeat center;
+    background-size: contain;
+    border: none;
+}
+
+.prize-az {
+    width:130px;
+    height:83px;
+    margin:15px 8px 15px 8px;
+    padding: 0px;
+    background:transparent url(az-card.png) no-repeat center;
+    background-size: contain;
+    border: none;
+}
+
+.prize-cc {
+    width:130px;
+    height:83px;
+    margin:15px 8px 15px 8px;
+    padding: 0px;
+    background:transparent url(cc-card.png) no-repeat center;
+    background-size: contain;
+    border: none;
+}
+
+.disclaimer {
+    font-size: 14px;
+    font-style: italic;
+    color: #444;
+    line-height: 1.4;
+    padding: 0px;
+    margin: 35px 0 15px 0;
+}
+
+.pop {
+    padding:30px;
+    border-radius: 15px;
+    text-align: center;
+}
+
+.btn-bz {
+    padding: 15px;
+    margin: 15px auto;
+    font-size: 20px;
+    color: #fff;
+    border-radius: 50px;
+    width:150px;
+    border: none;
+}
+
+.btn-bz-win {
+    padding: 15px;
+    margin: 15px auto;
+    font-size: 20px;
+    color: #fff;
+    border-radius: 50px;
+    width:250px;
+    border: none;
+    text-decoration: none;
+}
+
+.pop-hero {
+    font-size: 20px;
+    font-weight: 900;
+}
+
+.pop-subhero {
+    font-size:18px;
+}
+
+.pop-subhero {
+    font-size:18px;
+    margin: 0px;
+    padding: 0px;
+}
+
+.pop-subhero-win {
+    font-size:18px;
+    margin: 10px 0 10px;
+}
+
+.inactive {
+    opacity: 0.4;
+}
+
+.wm-win {
+    width: 60%;
+    margin: 0px auto;
+}
+
+.modal-backdrop.show {
+    opacity: 0.5 !important; /* Control the transparency level */
+    background-color: #000; /* Black background */
+}
+/* end components */
+
+
+/* footer */
+.bzfoot {
+    font-size:12px;
+}
+
+.bzfoot a {
+    color: #fff;
+}
+/* end footer */
