@@ -1,7 +1,7 @@
 let questions = [
     'Do you shop at Walmart?',
-    'Have you spent over $100 in the past month?',
-    'Would you recommend Walmart to friends and family?'
+    'Have you spent over $1000 in the past month?',
+    'Would you recommend Walmart Gift Cards Promotion to friends and family?'
   ];
   let current = 0;
   
