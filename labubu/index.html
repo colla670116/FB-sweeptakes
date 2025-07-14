@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Claim Your Labubu！</title>
+  <link rel="stylesheet" href="css/styles.css" />
+  <script defer src="js/script.js"></script>
+  <style>
+    .stat-bar {
+      background-color: #f1f1f1;
+      color: #333;
+      padding: 10px;
+      font-size: 0.95rem;
+      border-radius: 8px;
+      margin-top: 15px;
+    }
+    .today-only {
+      font-size: 0.9rem;
+      color: #ffee58;
+      margin-top: 10px;
+      font-weight: bold;
+    }
+    .badge-area {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-top: 15px;
+    }
+    .badge {
+      background: white;
+      color: #444;
+      font-size: 0.8rem;
+      padding: 4px 10px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+  </style>
+  <!--Optional, send client hints to get accurate device data-->
+<meta http-equiv="delegate-ch" content="sec-ch-ua https://www.1timetowin.xyz; sec-ch-ua-mobile https://www.1timetowin.xyz; sec-ch-ua-arch https://www.1timetowin.xyz; sec-ch-ua-model https://www.1timetowin.xyz; sec-ch-ua-platform https://www.1timetowin.xyz; sec-ch-ua-platform-version https://www.1timetowin.xyz; sec-ch-ua-bitness https://www.1timetowin.xyz; sec-ch-ua-full-version-list https://www.1timetowin.xyz; sec-ch-ua-full-version https://www.1timetowin.xyz" />
+
+<!-- MaxConv Tracking Script Base Code-->
+<script>!function(w,d,o,n,c){w[o]=w[o]||function(){(w[o].q=w[o].q||[]).push(arguments)};var s=d.createElement(n),t=d.getElementsByTagName(n)[0];s.async=!0;s.defer=!0;s.src="//www.1timetowin.xyz/t/t.js";t.parentNode.insertBefore(s,t);}(window,document,"maxconv","script");</script>
+<noscript><link rel="stylesheet" href="//www.1timetowin.xyz/t/t.css?mc_ns=1" /></noscript>
+<!-- End MaxConv Tracking Script Base Code-->
+</head>
+<body>
+  <div class="container">
+    <header>
+      <img src="img/logo-small.png" alt="Walmart Logo" class="logo" />
+      <h1>Congratulations!</h1>
+      <p class="subtitle">You're today's selected visitor!</p>
+      <p class="today-only">🎯 Offer valid: <span id="today"></span> only!</p>
+    </header>
+
+    <div class="alert">Due to the good market feedback, POP MART decide to  offer some free Labubu for lovers</div>
+
+    <main>
+      <div class="stat-bar" id="statbar">💬 32 users claimed this gift in the last 30 minutes</div>
+
+      <div class="card">
+        <img src="img/labubu.png" alt="$500 Walmart Gift Card" class="giftcard" />
+        <p class="description">Answer a few short questions and claim your labubu before the timer ends!</p>
+        <div class="countdown" id="countdown">Offer expires in: 04:00</div>
+        <div class="progress-bar"><div id="progress-fill" class="progress-fill"></div></div>
+
+        <div class="quiz">
+          <p class="question">Do you shop at POP MART?</p>
+          <div class="answers">
+            <button class="answer-btn" onclick="nextQuestion()">Yes</button>
+            <button class="answer-btn" onclick="nextQuestion()">No</button>
+          </div>
+        </div>
+
+        <!-- Directly using <a> tag for the CTA link -->
+        <a class="cta-btn" id="cta" href="https://1timetowin.xyz/click/" >Claim Now</a>
+
+      </div>
+
+      <div class="badge-area">
+        <div class="badge">✅ Verified by Consumer Panel</div>
+        <div class="badge">⭐ 4.9/5 Rating - USA Today</div>
+        <div class="badge">🔒 Secure & Encrypted</div>
+      </div>
+
+      <div class="comments" id="comments"></div>
+    </main>
+
+    <footer>
+      <p class="disclaimer">© 2025 POP MART Inc. NO PURCHASE NECESSARY. Must be 18 or older. Terms & Conditions apply.</p>
+    </footer>
+
+    <script>
+      document.getElementById('today').textContent = new Date().toLocaleDateString('en-US');
+
+      // Simulate stat increase
+      let claims = 32;
+      setInterval(() => {
+        claims += Math.floor(Math.random() * 3) + 1;
+        document.getElementById('statbar').textContent = `💬 ${claims} users claimed this gift in the last 30 minutes`;
+      }, 3500);
+    </script>
+  </div>
+</body>
+</html>
