@@ -1,7 +1,7 @@
 let questions = [
     'Are you over 18 years old?',
-    'Do you shop online regularly?',
-    'Do you currently use or plan to use a Visa gift card in the near future?'
+    'Do you enjoy receiving rewards or bonuses?',
+    'Would you be interested in receiving exclusive offers from top brands?'
   ];
   let current = 0;
   
