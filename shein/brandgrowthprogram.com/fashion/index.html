@@ -1,0 +1,641 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>US Style Program</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+	
+	<script type="text/javascript" src="https://usnew.internationaldealsfinder.com/track.js?rtkcmpid=678a2bac71994791216af5ee"></script>
+    <!--Optional, send client hints to get accurate device data-->
+<meta http-equiv="delegate-ch" content="sec-ch-ua https://www.1timetowin.xyz; sec-ch-ua-mobile https://www.1timetowin.xyz; sec-ch-ua-arch https://www.1timetowin.xyz; sec-ch-ua-model https://www.1timetowin.xyz; sec-ch-ua-platform https://www.1timetowin.xyz; sec-ch-ua-platform-version https://www.1timetowin.xyz; sec-ch-ua-bitness https://www.1timetowin.xyz; sec-ch-ua-full-version-list https://www.1timetowin.xyz; sec-ch-ua-full-version https://www.1timetowin.xyz" />
+
+<!-- MaxConv Tracking Script Base Code-->
+<script>!function(w,d,o,n,c){w[o]=w[o]||function(){(w[o].q=w[o].q||[]).push(arguments)};var s=d.createElement(n),t=d.getElementsByTagName(n)[0];s.async=!0;s.defer=!0;s.src="//www.1timetowin.xyz/t/t.js";t.parentNode.insertBefore(s,t);}(window,document,"maxconv","script");</script>
+<noscript><link rel="stylesheet" href="//www.1timetowin.xyz/t/t.css?mc_ns=1" /></noscript>
+<!-- End MaxConv Tracking Script Base Code-->
+</head>
+<body>
+
+    <div class="top-timer-container" style="display: none;">
+        <p class="top-timer-text">YOUR SPOT IS RESERVED FOR <span id="top-timer">3:00</span></p>
+    </div>
+
+    <header>
+        <div class="header-content">
+            <div class="logo">SS</div> <span class="program-title">US Style Program</span>
+            <button id="openModalBtn" class="info-button">?</button>
+        </div>
+    </header>
+
+    <div id="faqModal" class="modal">
+        <div class="modal-content">
+            <span class="close-button">×</span>
+            <h2>Frequently Asked Questions</h2>
+            <div class="faq-item">
+                <button class="faq-question">Which are the participation requirements?</button>
+                <div class="faq-answer">
+                    <p>You need to be over 18 years old and live in the United States.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question">What can I get from this program?</button>
+                <div class="faq-answer">
+                    <p>You have the opportunity to receive a $750 SHEIN gift card to spend on anything you want from the app!</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question">What if I apply without meeting the requirements?</button>
+                <div class="faq-answer">
+                    <p>Unfortunately, your application will not be considered if you don't meet the eligibility criteria.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <main>
+        <section id="heroSection" class="hero">
+            <h1>Welcome to the US Style Program!</h1>
+            <p>The US Style initiative offers people from United States a chance to receive a <span class="highlight">$750 gift card</span> that can be used to purchase products from the app. To apply, answer three simple questions about the latest fashion trends. Don't miss this opportunity!</p>
+
+            <p>Ready to elevate your style? Click the <span class="highlight">GET STARTED</span> button below.</p>
+            <p>Once you tap the button, a timer will start. You will have <span class="highlight">3 minutes</span> to complete the process.</p>
+
+           <div class="product-showcase">
+                <img src="images/image2.png" alt="Fashion Bag" loading="lazy">
+          
+            </div>
+<center>
+         <button id="startTimer">Get Started</button></center>
+        </section>
+
+
+    <div class="final" i>
+          						<h1>Congratulations!</h1>
+				<p class="end-text">You have completed the process and can now claim your <span class="color">$750 Fashion gift card</span>. Please follow the steps below to proceed with claiming your reward!</p>
+				 <div class="product-showcase">
+                <img src="images/image2.png" alt="Fashion Bag" loading="lazy">
+          
+            </div>
+				<div class="end-list">
+<li>Confirm Your Delivery Details (Click on "CLAIM NOW" button): Inform us where to send your <span style="font-weight:800;color:#ff1f6a;">$750 Fashion Gift Card</span>. Please provide your delivery address after responding to our sponsored questions to secure your gift card.</li>
+<li><span style="font-weight:800;color:#ff1f6a;">Engage with Our Sponsored Offers:</span> Explore <span style="font-weight:800;color:#ff1f6a;">our selected deals</span> to double your gift card and support the continuation of this program. Act quickly—these exclusive opportunities are limited!</li>
+<li>Prepare for the Unveiling: Expect the delivery of your $750 Gift card within 5 days. </li>
+
+				</div>
+				</ol>
+				<div class="started">
+					<a target="_blank" rel="noopener noreferrer" href="https://www.1timetowin.xyz/click/1">CLAIM NOW</a>
+				</div>
+			</div>
+    
+       
+          <div id="questionsContainer" style="display: none;">
+            <form id="quizForm"></form>
+            <div id="nextQuestionPreview" style="opacity: 0;"></div>
+         </div>
+		 
+		    <div id="errorContainer" style="display: none;">
+            <div class="error-message">
+                <span class="error-icon">✖</span>
+                <p>We only allow people from US to participate</p>
+                <button id="tryAgainButton">Try Again</button>
+            </div>
+        </div>
+         
+		 
+        <div id="loadingContainer" style="display:none;"></div>
+
+           <section id="testimonialsSection" class="testimonials" style="display:block">
+            <h2>What others are saying</h2>
+             <div class="comments-header">
+             <span id="commentCountText">173 comments</span>
+               <div class="sort-dropdown">
+                <button class="sort-button">Sort by  Newest ▾</button>
+
+                <div class="sort-options">
+                     <button data-sort="newest"> Newest</button>
+                        <button data-sort="oldest">Oldest</button>
+                  </div>
+             </div>
+         </div>
+            <div id="commentSection" class="comment-section"></div>
+             <div class="add-comment">
+                <input type="text" placeholder="Add a comment..." />
+             </div>
+            <button id="loadMoreButton">Load More Comments</button>
+        </section>
+
+     
+
+    </main>
+
+   <footer>
+         <div class="legal-links">
+    	<p> 
+          <a href="">Terms and Conditions</a>  
+          <a href="">Privacy Policy</a> 
+           <a href="">Non-affiliation Statement</a>  
+            </p>
+
+         	 <p>
+               All brand names and trademarks mentioned on this site belong to their respective owners and are not connected to this promotion. This special offer concludes at the close of 2025.
+    </p>
+        <p>
+             This site is independent of the Facebook website and Facebook Inc. Furthermore, this site is not supported by Facebook in any way. Facebook is a registered trademark of Facebook, Inc.
+        </p>
+   </div>
+
+        <p class="copyright">© <span id="currentYear"></span> - US Style Program. All rights reserved.</p>
+    </footer>
+
+
+    <script>
+// script.js
+// Modal-related code (unchanged)
+const modal = document.getElementById('faqModal');
+const openModalBtn = document.getElementById('openModalBtn');
+const closeBtn = document.querySelector('.close-button');
+const faqQuestions = document.querySelectorAll('.faq-question');
+
+openModalBtn.onclick = function() {
+    modal.style.display = 'block';
+};
+
+closeBtn.onclick = function() {
+    modal.style.display = 'none';
+};
+
+faqQuestions.forEach(question => {
+    question.addEventListener('click', () => {
+        const answer = question.nextElementSibling;
+        answer.style.display = answer.style.display === 'block' ? 'none' : 'block';
+        question.classList.toggle('active');
+    });
+});
+
+window.onclick = function(event) {
+    if (event.target === modal) {
+        modal.style.display = 'none';
+    }
+};
+
+
+// Quiz and loading-related code
+const startButton = document.getElementById('startTimer');
+const questionsContainer = document.getElementById('questionsContainer');
+const loadingContainer = document.getElementById('loadingContainer');
+const quizForm = document.getElementById('quizForm');
+const timerDisplay = document.getElementById('timer');
+const timerText = document.querySelector('.timer-text');
+const errorContainer = document.getElementById('errorContainer');
+const tryAgainButton = document.getElementById('tryAgainButton');
+const topTimerDisplay = document.getElementById('top-timer');
+const topTimerContainer = document.querySelector('.top-timer-container');
+const heroSection = document.getElementById('heroSection');
+const nextQuestionPreview = document.getElementById('nextQuestionPreview');
+const commentSection = document.getElementById('commentSection');
+const loadMoreButton = document.getElementById('loadMoreButton');
+const currentYearSpan = document.getElementById('currentYear');
+const testimonialsSection = document.getElementById('testimonialsSection');
+
+
+let countdownInterval;
+let commentCount = 0;
+let currentQuestionIndex = 0;
+let answers = {};
+
+const questions = [
+    {
+        text: '1/3 Do you live in the USA?<br><small>We are looking for United States residents for this program.</small>',
+        options: ['YES', 'NO']
+    },
+    {
+        text: '2/3 How often do you update your wardrobe with new items?<br><small>Your shopping habits help us tailor our offers and style suggestions.</small>',
+        options: ['Every season', 'Several times a year', 'Rarely']
+    },
+    {
+        text: '3/3 Would personalized fashion recommendations enhance your shopping experience?<br><small>We value your input to refine our style curation and offerings.</small>',
+        options: ['Yes, definitely', 'Possibly', 'Not interested']
+    }
+];
+const comments = [
+ {
+        user: 'Carolina Thomas',
+        profile: 'images/profile1.jpg',
+        text: "This is the best thing that ever happened to me, I lived in United States since birth.. And now to receive this amazing gift card! This program is amazing!!",
+        image: 'images/boxes.jpg',
+        likes: 51,
+        time: 'a week ago',
+        profileLink: 'https://www.facebook.com/profile.php?id=61565900742722'
+    },
+    {
+        user: 'Presley Amanda',
+        profile: 'images/profile2.jpg',
+        text: "Can’t believe this is only available in United States Can't wait to receive my Gift Card!! My wishlist is hugeee",
+        likes: 0,
+        time: 'a week ago',
+        profileLink: 'https://www.facebook.com/profile.php?id=61557862979797'
+    },
+    {
+        user: 'Chole Licc',
+        profile: 'images/profile3.jpg',
+        text: "A friend of mine told me that this is part of their program to respond in United States. I was so happy when I applied. My wishlist is finally empty. This is the best thing that ever happened to me",
+        image: 'images/boxes2.jpg',
+        likes: 43,
+        time: ' a week ago',
+        profileLink: 'https://www.facebook.com/profile.php?id=61561905543527'
+    },
+    {
+        user: 'Ruth Pacino',
+        profile: 'images/profile4.jpg',
+        text: "I live in United States. Can’t wait to receive it! 🤩",
+        likes: 61,
+        time: '2 weeks ago',
+        profileLink: 'https://www.facebook.com/ruth.pacino.9/'
+    },
+    {
+        user: 'Marcy John',
+        profile: 'images/profile5.jpg',
+        text: "Was skeptical at first, but winning this Gift Card made me a believer. And I really used it! Please note that this is only available only in United States",
+        image: 'images/boxes3.jpg',
+        likes: 14,
+        time: '2 weeks ago',
+           profileLink: 'https://www.facebook.com/profile.php?id=61563153969303'
+    },
+    {
+        user: 'Aline Sander',
+        profile: 'images/profile6.jpg',
+        text: "I can't wait to start shopping!!!",
+        likes: 23,
+        time: '3 weeks ago',
+          profileLink: 'https://www.facebook.com/profile.php?id=61552271503227'
+    },
+    {
+        user: 'Valentina Milla',
+        profile: 'images/profile7.jpg',
+        text: "I'm beyond excited about this program! As a devoted SHEIN shopper, this gift card is exactly what I needed!",
+        likes: 66,
+        time: '1 month ago',
+         profileLink: 'https://www.facebook.com/valentina.milla.2024/'
+    },
+    {
+        user: 'Rachel Starr',
+        profile: 'images/profile8.jpg',
+        text: "I’ve told all my friends. Hoping we can all win a Gift Card!",
+        likes: 11,
+        time: '2 months ago',
+          profileLink: 'https://www.facebook.com/profile.php?id=61566667632356'
+    },
+    {
+        user: 'Ada Anderson',
+        profile: 'images/profile9.jpg',
+        text: "I received my gift card last week and already have a few outfits on their way",
+        image: 'images/boxes4.jpg',
+        likes: 71,
+        time: '2 months ago',
+         profileLink: 'https://www.facebook.com/profile.php?id=61567384136292'
+    },
+    {
+        user: 'Mary Jennifer',
+        profile: 'images/profile10.jpg',
+        text: "I love Shein, I hope I can get it!!",
+        likes: 12,
+        time: '2 months ago',
+         profileLink: 'https://www.facebook.com/profile.php?id=61565666996204'
+    },
+    {
+        user: 'Bora Jackson',
+        profile: 'images/profile11.jpg',
+        text: "I am from USA, I deserve it !!",
+        likes: 5,
+        time: '3 months ago',
+          profileLink: 'https://www.facebook.com/profile.php?id=61562641954604'
+    },
+    {
+        user: 'Mana Lee',
+        profile: 'images/profile12.jpg',
+        text: "Thank you for doing this!!",
+        likes: 6,
+        time: '3 months ago',
+          profileLink: 'https://www.facebook.com/profile.php?id=61571195003609'
+    },
+     {
+        user: 'Alicja Maria Mùller',
+        profile: 'images/profile13.jpg',
+        text: "Omg this is amazing!!!",
+          likes: 8,
+        time: '3 months ago',
+          profileLink: 'https://www.facebook.com/alicjamaria.muller'
+    },
+    {
+        user: 'Jassica Smith',
+        profile: 'images/profile14.jpg',
+        text: "I love this Program!",
+        likes: 9,
+        time: '3 months ago',
+         profileLink: 'https://www.facebook.com/profile.php?id=61560534391134'
+    },
+    {
+        user: 'Sophia Green',
+        profile: 'images/profile15.jpg',
+        text: "Can’t believe this is only available in United States ",
+        likes: 1,
+        time: '3 months ago',
+          profileLink: 'https://www.facebook.com/profile.php?id=61570570840048'
+    },
+    {
+        user: 'Juliana Dove',
+        profile: 'images/profile16.jpg',
+        text: "Is this program still available??",
+        likes: 2,
+        time: '3 months ago',
+          profileLink: 'https://www.facebook.com/profile.php?id=61568721553838'
+    },
+    {
+        user: 'Gloria Miscala',
+        profile: 'images/profile17.jpg',
+        text: "My friends told me to try this!! I hope I get it",
+        likes: 15,
+        time: '3 months ago',
+          profileLink: 'https://www.facebook.com/profile.php?id=61558425025451'
+    },
+    {
+        user: 'Annalisa Dorothy',
+        profile: 'images/profile18.jpg',
+        text: "Love it!!!",
+        likes: 13,
+        time: '3 months ago',
+          profileLink: 'https://www.facebook.com/profile.php?id=61570591179814'
+    },
+     {
+       user: 'Barte B. Annie',
+       profile: 'images/profile19.jpg',
+        text: "I'm trying to win this gift card for my family!",
+         likes: 10,
+        time: '3 months ago',
+           profileLink: 'https://www.facebook.com/barte.b.annie/'
+    },
+      {
+         user: 'Asereth Meñosa',
+        profile: 'images/profile20.jpg',
+        text: "It would be a big help to win this gift card!",
+          likes: 0,
+        time: '3 months ago',
+          profileLink: 'https://www.facebook.com/asereth.menosa.739732/'
+    },
+      {
+        user: 'Cristiana Rose',
+        profile: 'images/profile21.jpg',
+        text: "I never win anything, I hope to get this",
+          likes: 2,
+        time: '3 months ago',
+          profileLink: 'https://www.facebook.com/Cristiana425/'
+    },
+     {
+        user: 'Williams Cora',
+        profile: 'images/profile22.jpg',
+        text: "This would be perfect for my closet! Hope I win!",
+         likes: 6,
+        time: '4 months ago',
+        profileLink: 'https://www.facebook.com/profile.php?id=61569908106256'
+    },
+    {
+        user: 'Mary Anim',
+        profile: 'images/profile23.jpg',
+        text: "I'm beyond excited about this program!",
+          likes: 21,
+        time: '4 months ago',
+           profileLink: 'https://www.facebook.com/mary.anim.585/'
+    },
+    {
+        user: 'Alice Newman',
+        profile: 'images/profile24.jpg',
+        text: "I can't wait to start shopping!!!",
+          likes: 51,
+        time: '4 months ago',
+          profileLink: 'https://www.facebook.com/AlicenewmanFXtrader89/'
+    },
+    {
+        user: 'Samatha Samatha Daisy',
+        profile: 'images/profile25.jpg',
+        text: "I can't wait to try",
+         likes: 1,
+        time: '4 months ago',
+           profileLink: 'https://www.facebook.com/samatha.samathadaisy/'
+        }
+];
+
+
+
+function startTimer() {
+    let timeLeft = 180;
+    let startTime = Date.now();
+
+    topTimerContainer.style.display = 'block';
+
+    countdownInterval = setInterval(() => {
+        const elapsed = Math.floor((Date.now() - startTime) / 1000);
+        timeLeft = 180 - elapsed;
+
+        if (timeLeft <= 0) {
+            clearInterval(countdownInterval);
+            topTimerDisplay.textContent = "Time's up!";
+            return;
+        }
+
+        const minutes = Math.floor(timeLeft / 60);
+        const seconds = timeLeft % 60;
+        const formattedMinutes = minutes === 0 ? '0 MINUTES' : minutes + ' MINUTES';
+        topTimerDisplay.textContent = ` ${formattedMinutes} AND ${seconds < 10 ? '0' : ''}${seconds} SECONDS`;
+    }, 1000);
+}
+
+
+function displayQuestion(question) {
+    const questionDiv = document.createElement('div');
+    questionDiv.className = 'question';
+    questionDiv.innerHTML = `<p>${question.text}</p>`;
+
+    question.options.forEach(option => {
+        const button = document.createElement('button');
+        button.type = 'button';
+        button.textContent = option;
+        button.dataset.value = option;
+        button.addEventListener('click', () => handleAnswer(option));
+        questionDiv.appendChild(button);
+    });
+
+     if(currentQuestionIndex < questions.length -1 ){
+          nextQuestionPreview.innerHTML =  `<p>${questions[currentQuestionIndex+1].text}</p>`;
+           nextQuestionPreview.style.opacity = 1;
+        } else{
+             nextQuestionPreview.innerHTML = "";
+          nextQuestionPreview.style.opacity = 0;
+        }
+
+    quizForm.appendChild(questionDiv);
+}
+function handleAnswer(answer) {
+   if(currentQuestionIndex === 0 && answer === 'NO'){
+        questionsContainer.style.display = 'none';
+        errorContainer.style.display = 'block';
+        clearInterval(countdownInterval);
+        return;
+    }
+
+    answers[currentQuestionIndex + 1] = answer;
+
+    currentQuestionIndex++;
+    if (currentQuestionIndex < questions.length) {
+        displayNextQuestion();
+    } else {
+        showloading();
+    }
+}
+function displayNextQuestion() {
+    const currentQuestionDiv = quizForm.querySelector('.question');
+    currentQuestionDiv.style.opacity = 0;
+    nextQuestionPreview.style.opacity = 0;
+
+    setTimeout(() => {
+        quizForm.innerHTML = '';
+        nextQuestionPreview.innerHTML = "";
+         displayQuestion(questions[currentQuestionIndex]);
+    }, 500);
+}
+
+function showloading() {
+    testimonialsSection.style.display = 'block';
+    questionsContainer.style.display = 'none';
+    loadingContainer.style.display = 'block';
+
+    loadingContainer.innerHTML = `
+        <h2>Thank you for your time!</h2>
+        <p>Please wait a couple of seconds to process your answers.</p>
+        <ul id="loadingMessages">
+            <li>Saving answers from the poll <span class="loading-circle"></span></li>
+            <li>You are an eligible participant <span class="loading-circle"></span></li>
+            <li>Only 55 gift cards left <span class="loading-circle"></span></li>
+            <li>Your spot is reserved until the timer expires <span class="loading-circle"></span></li>
+        </ul>
+    `;
+
+    const loadingItems = document.getElementById('loadingMessages').querySelectorAll('li');
+    let delay = 0;
+
+    loadingItems.forEach((item, index) => {
+        setTimeout(() => {
+            item.querySelector('.loading-circle').classList.add('active');
+        }, delay * 1000);
+        delay += 1;
+        setTimeout(() => {
+            item.querySelector('.loading-circle').classList.remove('active');
+            item.innerHTML = item.innerHTML.replace('<span class="loading-circle"></span>', '<span class="check-icon">✔</span>');
+        }, (delay + 0.5) * 1000);
+        delay += 0.5;
+    });
+
+    setTimeout(redirectToFinalPage,  delay*1000);
+}
+
+function redirectToFinalPage() {
+    // Hide the current loading messages container
+    document.getElementById('loadingContainer').style.display = 'none';
+
+    // Show the final page with class "final"
+    const finalPage = document.querySelector('.final');
+    if (finalPage) {
+        finalPage.style.display = 'block';
+    }
+}
+
+
+function displayComments() {
+    const currentBatch = comments.slice(commentCount, commentCount + 5);
+    currentBatch.forEach(comment => {
+        const commentDiv = document.createElement('div');
+        commentDiv.className = 'comment';
+        commentDiv.innerHTML = `
+
+		 <div class="comment-header">
+              <img src="${comment.profile}" alt="${comment.user}" class="comment-profile-pic">
+			     <div class ="background">
+                <span class="comment-user">
+                    <a href="${comment.profileLink}" target="_blank" rel="noopener noreferrer">
+                        ${comment.user}
+                     </a>
+                </span>
+      
+		  
+          <p class="comment-text">${comment.text}</p></div></div>  
+          ${comment.image ? `<img src="${comment.image}" alt="Boxes" class="comment-image">` : ''}
+		  </div>  
+          <div class="comment-footer">
+         	    <a class="comment-action like-action" data-index="${comments.indexOf(comment)}">
+         <span style="padding: 0px 10px 0px 0px;">  Like</span>
+           <span style="padding: 0px 10px 0px 0px;">Reply</span>
+	
+              <span class="like-icon"></span><span class="like-count" style="padding: 0px 10px 0px 0px;">${comment.likes}</span>
+
+            <span>${comment.time}</span>
+        </div>
+    `;
+        commentSection.appendChild(commentDiv);
+    });
+    commentCount += currentBatch.length;
+    if(commentCount >= comments.length){
+         loadMoreButton.style.display = "none";
+        } else {
+            loadMoreButton.style.display = "block";
+        }
+    const likeButtons = commentSection.querySelectorAll('.like-action');
+    likeButtons.forEach(button => {
+        button.addEventListener('click', function(event) {
+            event.preventDefault();
+             const commentIndex = parseInt(this.dataset.index, 10);
+            if (this.classList.contains('liked')) {
+                this.classList.remove('liked');
+                 comments[commentIndex].likes--;
+            } else {
+                this.classList.add('liked');
+             comments[commentIndex].likes++;
+            }
+            this.querySelector('.like-count').textContent = comments[commentIndex].likes;
+        });
+    });
+}
+
+startButton.addEventListener('click', () => {
+    heroSection.classList.add('hidden');
+    startButton.style.display = 'none';
+    errorContainer.style.display = 'none';
+    topTimerContainer.style.display = 'block';
+      testimonialsSection.style.display = 'block';
+    questionsContainer.style.display = 'block';
+  testimonialsSection.style.marginTop = '100px';
+    displayQuestion(questions[currentQuestionIndex]);
+    startTimer();
+  if (comments.length > 5) {
+        loadMoreButton.style.display = "block";
+    }else{
+          loadMoreButton.style.display = "none";
+        }
+});
+
+tryAgainButton.addEventListener('click', () => {
+    window.location.reload();
+});
+
+loadMoreButton.addEventListener('click', () => {
+    displayComments();
+});
+
+const currentYear = new Date().getFullYear();
+currentYearSpan.textContent = currentYear;
+displayComments();
+</script>
+</body>
+</html>
