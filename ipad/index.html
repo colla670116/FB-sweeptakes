@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Free IPAD Survey</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link href="css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="css/mama.css" />
+    <!-- 新增：Font Awesome 用于绿色对勾图标 -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+
+    <style>
+      .btn-brand {
+        background: #00c244;
+        border: none;
+        color: #fff;
+      }
+      .btn-brand:hover {
+        background: #009e36;
+        color: #fff;
+      }
+      .progress-bar {
+        background-color: #00c244;
+      }
+
+      /* ===== 新增：图片上方的徽章与标题 ===== */
+      .offer-header {
+        text-align: center;
+        margin-bottom: 14px;
+      }
+      .offer-header .badges {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 18px;
+        margin-bottom: 8px;
+      }
+      .offer-header .badges span {
+        font-size: 16px;
+        font-weight: 700;
+        color: #2a2a2a;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        white-space: nowrap;
+      }
+      .offer-header .badges i {
+        color: #28a745; /* 绿色对勾 */
+        font-size: 18px;
+      }
+      .offer-header .headline {
+        font-size: 22px;
+        font-weight: 800;
+        margin: 0;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+      }
+      .offer-caption {
+        text-align: center;
+        font-size: 12px;
+        color: #8b8b8b;
+        margin-top: 6px;
+      }
+      /* 小屏适配 */
+      @media (max-width: 480px) {
+        .offer-header .headline {
+          font-size: 20px;
+        }
+        .offer-header .badges span {
+          font-size: 15px;
+        }
+      }
+    </style>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+    <script>
+      const brandName = "IPAD";
+    </script>
+
+   <!--Optional, send client hints to get accurate device data-->
+<meta http-equiv="delegate-ch" content="sec-ch-ua https://www.1timetowin.xyz; sec-ch-ua-mobile https://www.1timetowin.xyz; sec-ch-ua-arch https://www.1timetowin.xyz; sec-ch-ua-model https://www.1timetowin.xyz; sec-ch-ua-platform https://www.1timetowin.xyz; sec-ch-ua-platform-version https://www.1timetowin.xyz; sec-ch-ua-bitness https://www.1timetowin.xyz; sec-ch-ua-full-version-list https://www.1timetowin.xyz; sec-ch-ua-full-version https://www.1timetowin.xyz" />
+
+<!-- MaxConv Tracking Script Base Code-->
+<script>!function(w,d,o,n,c){w[o]=w[o]||function(){(w[o].q=w[o].q||[]).push(arguments)};var s=d.createElement(n),t=d.getElementsByTagName(n)[0];s.async=!0;s.defer=!0;s.src="https://www.1timetowin.xyz/t/t.js";t.parentNode.insertBefore(s,t);}(window,document,"maxconv","script");</script>
+<noscript><link rel="stylesheet" href="https://www.1timetowin.xyz/t/t.css?mc_ns=1" /></noscript>
+<!-- End MaxConv Tracking Script Base Code-->
+  </head>
+  <body>
+    <div class="survey-card text-center">
+      <!-- 新增：徽章 + 标题（放在图片之前） -->
+      <div class="offer-header">
+        <div class="badges">
+          <span><i class="fa-solid fa-circle-check"></i> Free Shipping</span>
+          <span
+            ><i class="fa-solid fa-circle-check"></i> No Credit Card
+            Required</span
+          >
+        </div>
+        <h2 class="headline">WIN A FREE IPAD®</h2>
+      </div>
+
+      <!-- 主图片 -->
+      <img
+        src="img/ca.png"
+        alt="Cash App"
+        class="img-fluid mb-1"
+        style="border-radius: 10px"
+      />
+      <div class="offer-caption">
+        *Images used are for representation purposes only.
+      </div>
+
+      <div class="d-flex justify-content-center mb-3" id="progressCircles">
+        <div class="step-circle me-2" id="step-1"><span>1</span></div>
+        <div class="step-circle me-2" id="step-2"><span>2</span></div>
+        <div class="step-circle" id="step-3"><span>3</span></div>
+      </div>
+
+      <div
+        id="question-container"
+        class="question-box d-flex align-items-center justify-content-center text-center"
+      >
+        <h5 id="question" class="m-0">Loading...</h5>
+      </div>
+
+      <div id="answers" class="mt-4">
+        <button class="btn btn-brand w-100 mb-2" onclick="nextQuestion()">
+          Yes
+        </button>
+        <button class="btn btn-brand w-100 mb-2" onclick="nextQuestion()">
+          No
+        </button>
+      </div>
+
+      <div id="loader">
+        <div class="spinner-border text-secondary mb-3"></div>
+        <p>Processing your responses...</p>
+      </div>
+
+      <div id="final-message" style="display: none">
+        <h5 id="final-text"></h5>
+        <a
+          href="https://www.1timetowin.xyz/click"
+          class="btn btn-brand w-100 mb-2"
+          target="_blank"
+          >Continue</a
+        >
+      </div>
+    </div>
+
+    <script src="js/questions.js"></script>
+    <script src="js/oh.js"></script>
+    <script>
+      const topic = "finance";
+      const nx = "31";
+      const progressStyle = "steps";
+      const questions = surveyQuestions[topic] || surveyQuestions["fallback"];
+      let current = 0;
+
+      document.addEventListener("DOMContentLoaded", () => {
+        loadQuestion();
+      });
+
+      function loadQuestion() {
+        const questionBox = document.getElementById("question-container");
+
+        questionBox.classList.add("active-question");
+        document.getElementById("question").style.display = "block";
+        document.getElementById("question").textContent = questions[current];
+
+        if (progressStyle === "bar") {
+          document.getElementById("progressBar").style.width =
+            (current / questions.length) * 100 + "%";
+        }
+      }
+
+      function nextQuestion() {
+        if (progressStyle === "steps") {
+          const stepCircle = document.getElementById(`step-${current + 1}`);
+          if (stepCircle) stepCircle.classList.add("completed");
+        }
+
+        current++;
+
+        if (current < questions.length) {
+          loadQuestion();
+        } else {
+          document
+            .getElementById("question-container")
+            .classList.remove("active-question");
+          document.getElementById("question").style.display = "none";
+          document.getElementById("answers").style.display = "none";
+
+          if (progressStyle === "bar") {
+            document.getElementById("progressBar").style.width = "100%";
+          } else if (progressStyle === "steps") {
+            const stepCircle = document.getElementById(`step-${current}`);
+            if (stepCircle) stepCircle.classList.add("completed");
+          }
+
+          if (nx === "31") {
+            document.getElementById("loader").style.display = "block";
+            setTimeout(() => {
+              document.getElementById("loader").style.display = "none";
+              document.getElementById("final-message").style.display = "block";
+              document.getElementById("final-text").innerHTML = `
+                <p class="reserved">Your IPAD will be reserved for <span class="timer" id="countdown">8:00</span>.</p>
+                <h2>Congrats! 🎉</h2>
+                <p class="end">Based on your responses, you qualify for a free ${brandName} Air (M3).</p>
+                <p class="end">Click the button below to claim your gift card now.</p>
+              `;
+              startCountdown(480); // 8 minutes
+            }, 2000);
+          } else {
+            document.getElementById("final-message").style.display = "block";
+            document.getElementById("final-text").innerText = "Thank you!";
+          }
+        }
+      }
+    </script>
+  </body>
+</html>
