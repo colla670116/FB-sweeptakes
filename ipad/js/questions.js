@@ -22,7 +22,7 @@ const surveyQuestions = {
     finance: [
         `Do you live in the United States?`,
         `Are you over the age of 18?`,
-        "Do you already have the latest generation of IPAD?"
+        "Do you like latest generation of IPAD?"
     ],
     fastfood: [
         `Do you visit ${brandName} more than once a month?`,
