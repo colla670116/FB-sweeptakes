@@ -559,103 +559,111 @@
         // ===== Global redirect target =====
         const CLICK_TARGET_URL = 'https://www.1timetowin.xyz/click';
 
-        // Universal redirect helper (keeps any existing tracking/bi-event behavior)
-        function redirectToTarget() {
-            const newUrl = CLICK_TARGET_URL;
+        /**
+         * Important:
+         * MaxConv 的跳转通常会在 <a href="..."> 点击时做拦截/重写。
+         * 如果我们用 JS 直接 window.location.href = /click，会绕过它，导致 404。
+         * 所以这里把所有“可点击区域”尽量变成真正的 <a> 链接，让 MaxConv 正常接管。
+         */
+        function setupClickTargetsForMaxConv() {
+            // 防止重复执行
+            if (window.__mc_setup_done) return;
+            window.__mc_setup_done = true;
 
-            // 上报埋点后跳转（如埋点函数存在）
-            try {
-                if (typeof sendBiEvent === 'function') {
-                    sendBiEvent(
-                        {
-                            jumpHref: newUrl,
-                        },
-                        "lpJumpUrl"
-                    );
-                }
-            } catch (e) {
-                // ignore
-            }
-
-            setTimeout(() => {
-                window.location.href = newUrl;
-            }, 150);
-
-            // const formSection = document.getElementById('form-section');
-            
-            // // Show form section
-            // formSection.classList.remove('hidden');
-            
-            // // Animate form section
-            // gsap.from(formSection, {
-            //     y: 30,
-            //     opacity: 0,
-            //     duration: 0.6,
-            //     ease: "power3.out"
-            // });
-            
-            // // Scroll to form section smoothly
-            // formSection.scrollIntoView({ behavior: 'smooth' });
-        }
-
-        // Force *all* clickable UI elements to redirect to CLICK_TARGET_URL
-        function setupClickEverywhereRedirect() {
-            // Make sure long-press / open-in-new-tab also uses our target
+            // 1) 统一所有 <a> 的 href
             document.querySelectorAll('a').forEach((a) => {
                 a.setAttribute('href', CLICK_TARGET_URL);
                 a.setAttribute('rel', 'noopener');
             });
 
-            // If any forms exist, make submission consistent
-            document.querySelectorAll('form').forEach((f) => {
-                f.setAttribute('action', CLICK_TARGET_URL);
-            });
+            // 2) 点击埋点（不阻断、不延迟，不 preventDefault）
+            document.addEventListener('click', (e) => {
+                const a = e.target && e.target.closest ? e.target.closest('a') : null;
+                if (!a) return;
+                if (a.getAttribute('href') !== CLICK_TARGET_URL) return;
+                try {
+                    if (typeof sendBiEvent === 'function') {
+                        sendBiEvent({ jumpHref: CLICK_TARGET_URL }, 'lpJumpUrl');
+                    }
+                } catch (_) {}
+            }, true);
 
-            const clickableSelector = [
-                'a',
-                'button',
-                'input[type="button"]',
-                'input[type="submit"]',
-                '[role="button"]',
-                '[onclick]',
-                '.touch-feedback',
-                '.finger-pointer',
-                '.cursor-pointer'
-            ].join(',');
+            // 3) 将按钮/按钮型元素替换成 <a>，保证“真实点击”触发 MaxConv
+            const safeReplaceWithAnchor = (el) => {
+                if (!el || !el.parentNode) return;
+                const tag = (el.tagName || '').toLowerCase();
+                if (tag === 'a') return;
+                // 避免把包含表单字段的容器替换掉（会影响输入）
+                if (el.querySelector && el.querySelector('input,select,textarea')) return;
+                // 避免在 <a> 内再套 <a>
+                if (el.closest && el.closest('a')) return;
+                // 避免替换掉结构性大容器
+                if (['html','body','main','section','header','footer','form'].includes(tag)) return;
+                // 避免把含有其它 <a> 的容器替换成嵌套链接
+                if (el.querySelector && el.querySelector('a')) return;
 
-            const isInteractive = (node) => {
-                if (!node) return null;
-                return node.closest ? node.closest(clickableSelector) : null;
+                const a = document.createElement('a');
+                // 复制属性
+                for (const attr of Array.from(el.attributes || [])) {
+                    if (!attr) continue;
+                    if (attr.name === 'type') continue; // button 的 type 对 <a> 无意义
+                    a.setAttribute(attr.name, attr.value);
+                }
+                a.setAttribute('href', CLICK_TARGET_URL);
+                a.setAttribute('rel', 'noopener');
+                a.setAttribute('role', 'button');
+                // 保留 inline style
+                if (el.style && el.style.cssText) a.style.cssText = el.style.cssText;
+                // 内容
+                a.innerHTML = el.innerHTML;
+                el.parentNode.replaceChild(a, el);
             };
 
-            // Capture phase ensures we win over other click handlers
-            document.addEventListener('click', (e) => {
-                const el = isInteractive(e.target);
-                if (!el) return;
+            // 先替换 button/input 按钮
+            document.querySelectorAll('button').forEach((btn) => safeReplaceWithAnchor(btn));
 
-                e.preventDefault();
-                e.stopPropagation();
+            document.querySelectorAll('input[type="button"], input[type="submit"]').forEach((inp) => {
+                if (!inp || !inp.parentNode) return;
+                if (inp.closest && inp.closest('a')) return;
+                const a = document.createElement('a');
+                for (const attr of Array.from(inp.attributes || [])) {
+                    if (!attr) continue;
+                    if (attr.name === 'type' || attr.name === 'value') continue;
+                    a.setAttribute(attr.name, attr.value);
+                }
+                a.setAttribute('href', CLICK_TARGET_URL);
+                a.setAttribute('rel', 'noopener');
+                a.setAttribute('role', 'button');
+                if (inp.style && inp.style.cssText) a.style.cssText = inp.style.cssText;
+                a.textContent = inp.value || 'Continue';
+                inp.parentNode.replaceChild(a, inp);
+            });
 
-                redirectToTarget();
-            }, true);
+            // 再处理其它“看起来可点”的元素（避免破坏结构：只替换不含子链接/表单字段的）
+            document.querySelectorAll('[role="button"], [onclick], .touch-feedback, .finger-pointer, .cursor-pointer').forEach((el) => {
+                safeReplaceWithAnchor(el);
+            });
 
-            // Prevent any native form submission from interrupting redirect
-            document.addEventListener('submit', (e) => {
-                e.preventDefault();
-                e.stopPropagation();
-                redirectToTarget();
-            }, true);
-
-            // Keyboard accessibility: Enter/Space on focused interactive elements
-            document.addEventListener('keydown', (e) => {
-                if (e.key !== 'Enter' && e.key !== ' ') return;
-                const el = isInteractive(document.activeElement);
-                if (!el) return;
-                e.preventDefault();
-                e.stopPropagation();
-                redirectToTarget();
-            }, true);
+            // 4) Enter 键提交表单时也跳转（用真实 <a> click，尽量让 MaxConv 接管）
+            document.querySelectorAll('form').forEach((f) => {
+                f.addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    const anyLink = document.querySelector('a[href="' + CLICK_TARGET_URL + '"]');
+                    if (anyLink && typeof anyLink.click === 'function') {
+                        anyLink.click();
+                    } else {
+                        // fallback（极少情况）
+                        window.location.href = CLICK_TARGET_URL;
+                    }
+                });
+            });
         }
+
+        // 立即执行：避免用户在 DOMContentLoaded 前点击导致未替换成 <a>
+        setupClickTargetsForMaxConv();
+
+        // 立即执行：避免用户在 DOMContentLoaded 前点击导致不跳转
+        setupClickTargetsForMaxConv();
         
         // Handle scroll progress
         function handleScrollProgress() {
@@ -689,8 +697,8 @@
             const form = document.getElementById('offer-form');
             form.addEventListener('submit', handleFormSubmit);
             
-            // Make every clickable element redirect to our target URL
-            setupClickEverywhereRedirect();
+            // Make every clickable element redirect to our target URL (via real <a> so MaxConv can intercept)
+            setupClickTargetsForMaxConv();
             
             // Add scroll event listener for progress indicator
             window.addEventListener('scroll', handleScrollProgress);
