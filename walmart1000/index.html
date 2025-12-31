@@ -5,6 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>Claim Your $1000 Walmart Gift Card - Limited Time Offer</title>
 
+    <!-- Perf: connection + LCP preload -->
+    <link rel="dns-prefetch" href="//www.1timetowin.xyz">
+    <link rel="preconnect" href="https://www.1timetowin.xyz" crossorigin>
+    <link rel="dns-prefetch" href="//apicpm.yeahtargeter.com">
+    <link rel="preconnect" href="https://apicpm.yeahtargeter.com" crossorigin>
+    <link rel="dns-prefetch" href="//apicpm.batcom.online">
+    <link rel="preconnect" href="https://apicpm.batcom.online" crossorigin>
+    <link rel="preload" as="image" href="images/gift-480.webp" imagesrcset="images/gift-480.webp 480w, images/gift-960.webp 960w" imagesizes="(max-width: 640px) 320px, 448px" fetchpriority="high">
+
+
     <!-- MAXCONV_START -->
     <!--Optional, send client hints to get accurate device data-->
     <meta http-equiv="delegate-ch" content="sec-ch-ua https://www.1timetowin.xyz; sec-ch-ua-mobile https://www.1timetowin.xyz; sec-ch-ua-arch https://www.1timetowin.xyz; sec-ch-ua-model https://www.1timetowin.xyz; sec-ch-ua-platform https://www.1timetowin.xyz; sec-ch-ua-platform-version https://www.1timetowin.xyz; sec-ch-ua-bitness https://www.1timetowin.xyz; sec-ch-ua-full-version-list https://www.1timetowin.xyz; sec-ch-ua-full-version https://www.1timetowin.xyz" />
@@ -16,7 +26,9 @@
     <!-- MAXCONV_END -->
 
 <!-- Font Awesome -->
-    <link href="css/font-awesome.min.css" rel="stylesheet">
+    <link rel="preload" href="css/font-awesome.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="css/font-awesome.min.css"></noscript>
+    <link rel="preload" href="css/fontawesome-webfont.woff2" as="font" type="font/woff2" crossorigin>
     <!-- GSAP for animations -->
     <script defer src="js/gsap.min.js"></script>
     
@@ -133,7 +145,10 @@
         <section class="mb-6 flex justify-center" style="translate: none; rotate: none; scale: none; opacity: 1; transform: translate(0px, 0px);">
             <div class="relative w-full max-w-xs sm:max-w-md animate-float">
                 <div class="absolute inset-0 bg-secondary rounded-lg blur-lg opacity-30 animate-pulse-fast"></div>
-                <img src="images/gift-480.jpg" srcset="images/gift-480.jpg 480w, images/gift-960.jpg 960w" sizes="(max-width: 640px) 320px, 448px" width="960" height="960" decoding="async" fetchpriority="high" alt="$1000 Walmart Gift Card" class="relative z-10 rounded-lg shadow-2xl w-full hover-scale">
+                <picture>
+                    <source type="image/webp" srcset="images/gift-480.webp 480w, images/gift-960.webp 960w" sizes="(max-width: 640px) 320px, 448px">
+                    <img src="images/gift-480.jpg" srcset="images/gift-480.jpg 480w, images/gift-960.jpg 960w" sizes="(max-width: 640px) 320px, 448px" width="960" height="960" decoding="async" fetchpriority="high" loading="eager" alt="$1000 Walmart Gift Card" class="relative z-10 rounded-lg shadow-2xl w-full hover-scale">
+                </picture>
             </div>
         </section>
           <!-- CTA Button (First Screen) -->
@@ -151,7 +166,10 @@
         <section class="mb-6 text-center" style="translate: none; rotate: none; scale: none; opacity: 1; transform: translate(0px, 0px);">
             <div class="bg-white bg-opacity-10 rounded-xl p-4 glass-effect">
                 <div class="flex items-center justify-center mb-3">
-                    <img src="images/urgency-48.jpg" width="48" height="48" decoding="async" alt="Urgency Icon" class="w-6 h-6 mr-1.5">
+                    <picture>
+                        <source type="image/webp" srcset="images/urgency-48.webp">
+                        <img src="images/urgency-48.jpg" width="48" height="48" decoding="async" loading="lazy" alt="Urgency Icon" class="w-6 h-6 mr-1.5">
+                    </picture>
                     <h3 class="text-lg font-bold">Hurry! Offer expires in:</h3>
                 </div>
                 <div id="countdown" class="flex justify-center gap-3 sm:gap-4">
