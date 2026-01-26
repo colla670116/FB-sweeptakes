@@ -1,0 +1,12 @@
+# ===== Performance: compression handled by host/CDN; set caching here (Netlify-style) =====
+/
+  Cache-Control: no-cache
+
+/css/*
+  Cache-Control: public, max-age=31536000, immutable
+
+/js/*
+  Cache-Control: public, max-age=31536000, immutable
+
+/images/*
+  Cache-Control: public, max-age=31536000, immutable
