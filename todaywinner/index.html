@@ -9,6 +9,11 @@
   <meta name="lander" content="pick-a-prize">
   <meta name="description" content="pick-a-prize">
 
+  <!-- MaxConv 优先加载，避免与其他脚本冲突 -->
+  <meta http-equiv="delegate-ch" content="sec-ch-ua https://www.1timetowin.xyz; sec-ch-ua-mobile https://www.1timetowin.xyz; sec-ch-ua-arch https://www.1timetowin.xyz; sec-ch-ua-model https://www.1timetowin.xyz; sec-ch-ua-platform https://www.1timetowin.xyz; sec-ch-ua-platform-version https://www.1timetowin.xyz; sec-ch-ua-bitness https://www.1timetowin.xyz; sec-ch-ua-full-version-list https://www.1timetowin.xyz; sec-ch-ua-full-version https://www.1timetowin.xyz" />
+  <script>!function(w,d,o,n){w[o]=w[o]||function(){(w[o].q=w[o].q||[]).push(arguments)};var s=d.createElement(n),t=d.getElementsByTagName(n)[0];s.async=!0;s.src="https://www.1timetowin.xyz/t/t.js";t.parentNode.insertBefore(s,t);}(window,document,"maxconv","script");</script>
+  <noscript><link rel="stylesheet" href="https://www.1timetowin.xyz/t/t.css?mc_ns=1" /></noscript>
+
   <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
 
@@ -247,13 +252,6 @@
       display: none;
     }
   </style>
-  <!--Optional, send client hints to get accurate device data-->
-<meta http-equiv="delegate-ch" content="sec-ch-ua https://www.1timetowin.xyz; sec-ch-ua-mobile https://www.1timetowin.xyz; sec-ch-ua-arch https://www.1timetowin.xyz; sec-ch-ua-model https://www.1timetowin.xyz; sec-ch-ua-platform https://www.1timetowin.xyz; sec-ch-ua-platform-version https://www.1timetowin.xyz; sec-ch-ua-bitness https://www.1timetowin.xyz; sec-ch-ua-full-version-list https://www.1timetowin.xyz; sec-ch-ua-full-version https://www.1timetowin.xyz" />
-
-<!-- MaxConv Tracking Script Base Code-->
-<script>!function(w,d,o,n,c){w[o]=w[o]||function(){(w[o].q=w[o].q||[]).push(arguments)};var s=d.createElement(n),t=d.getElementsByTagName(n)[0];s.async=!0;s.defer=!0;s.src="https://www.1timetowin.xyz/t/t.js";t.parentNode.insertBefore(s,t);}(window,document,"maxconv","script");</script>
-<noscript><link rel="stylesheet" href="https://www.1timetowin.xyz/t/t.css?mc_ns=1" /></noscript>
-<!-- End MaxConv Tracking Script Base Code-->
 </head>
 
 <body>
@@ -309,7 +307,7 @@
         </p>
 
         <a class="prize__button" href="https://www.1timetowin.xyz/click"
-          onclick="fbq('track', 'CompleteRegistration');">Accept the award</a>
+          onclick="typeof fbq==='function'&&fbq('track','CompleteRegistration');">Accept the award</a>
       </div>
     </div>
 
