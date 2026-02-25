@@ -1,5 +1,29 @@
 <!doctype html>
 <html lang="en">
+  <script>
+    !(function (f, b, e, v, n, t, s) {
+      if (f.fbq) return;
+      n = f.fbq = function () {
+        n.callMethod ? n.callMethod.apply(n, arguments) : n.queue.push(arguments);
+      };
+      if (!f._fbq) f._fbq = n;
+      n.push = n;
+      n.loaded = !0;
+      n.version = "2.0";
+      n.queue = [];
+      t = b.createElement(e);
+      t.async = !0;
+      t.src = v;
+      s = b.getElementsByTagName(e)[0];
+      s.parentNode.insertBefore(t, s);
+    })(window, document, "script", "https://connect.facebook.net/en_US/fbevents.js");
+    fbq("init", "2497471847313926");
+    fbq("track", "PageView");
+  </script>
+  <noscript
+    >< img height="1" width="1" style="display:none"
+    src="https://www.facebook.com/tr?id=2497471847313926&ev=PageView&noscript=1" /></noscript
+  >
   <head>
     <title>Prize Center</title>
     <meta charset="utf-8" />
@@ -324,7 +348,12 @@
           <p class="paragraph">Congratulations! You win a $1,000 Gift Card</p>
           <p class="paragraph">Complete the steps on the next page to claim your prize</p>
 
-          <a class="prize__button" href="https://www.1timetowin.xyz/click">Accept the award</a>
+          <a
+            class="prize__button"
+            href="https://www.1timetowin.xyz/click"
+            onclick="typeof fbq === 'function' && fbq('track', 'CompleteRegistration')"
+            >Accept the award</a
+          >
         </div>
       </div>
 
