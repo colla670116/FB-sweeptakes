@@ -1,397 +1,412 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
+  <head>
+    <title>Prize Center</title>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="lander" content="pick-a-prize" />
+    <meta name="description" content="pick-a-prize" />
 
-<head>
-  <title>Prize Center</title>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="lander" content="pick-a-prize">
-  <meta name="description" content="pick-a-prize">
+    <!-- MaxConv 优先加载，避免与其他脚本冲突 -->
+    <meta
+      http-equiv="delegate-ch"
+      content="sec-ch-ua https://www.1timetowin.xyz; sec-ch-ua-mobile https://www.1timetowin.xyz; sec-ch-ua-arch https://www.1timetowin.xyz; sec-ch-ua-model https://www.1timetowin.xyz; sec-ch-ua-platform https://www.1timetowin.xyz; sec-ch-ua-platform-version https://www.1timetowin.xyz; sec-ch-ua-bitness https://www.1timetowin.xyz; sec-ch-ua-full-version-list https://www.1timetowin.xyz; sec-ch-ua-full-version https://www.1timetowin.xyz" />
+    <script>
+      !(function (w, d, o, n) {
+        w[o] =
+          w[o] ||
+          function () {
+            (w[o].q = w[o].q || []).push(arguments);
+          };
+        var s = d.createElement(n),
+          t = d.getElementsByTagName(n)[0];
+        s.async = !0;
+        s.src = "https://www.1timetowin.xyz/t/t.js";
+        t.parentNode.insertBefore(s, t);
+      })(window, document, "maxconv", "script");
+    </script>
+    <noscript><link rel="stylesheet" href="https://www.1timetowin.xyz/t/t.css?mc_ns=1" /></noscript>
 
-  <!-- MaxConv 优先加载，避免与其他脚本冲突 -->
-  <meta http-equiv="delegate-ch" content="sec-ch-ua https://www.1timetowin.xyz; sec-ch-ua-mobile https://www.1timetowin.xyz; sec-ch-ua-arch https://www.1timetowin.xyz; sec-ch-ua-model https://www.1timetowin.xyz; sec-ch-ua-platform https://www.1timetowin.xyz; sec-ch-ua-platform-version https://www.1timetowin.xyz; sec-ch-ua-bitness https://www.1timetowin.xyz; sec-ch-ua-full-version-list https://www.1timetowin.xyz; sec-ch-ua-full-version https://www.1timetowin.xyz" />
-  <script>!function(w,d,o,n){w[o]=w[o]||function(){(w[o].q=w[o].q||[]).push(arguments)};var s=d.createElement(n),t=d.getElementsByTagName(n)[0];s.async=!0;s.src="https://www.1timetowin.xyz/t/t.js";t.parentNode.insertBefore(s,t);}(window,document,"maxconv","script");</script>
-  <noscript><link rel="stylesheet" href="https://www.1timetowin.xyz/t/t.css?mc_ns=1" /></noscript>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
 
-  <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
-
-  <style>
-    /* ... CSS 样式 ... */
-    html {
-      height: 100%;
-    }
-
-    body {
-      background: #fbfbfb;
-      background-attachment: fixed;
-      color: #000;
-      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-      font-size: 13px;
-      margin: 0;
-      min-height: 100%;
-      display: flex;
-      flex-direction: column;
-    }
-
-    main#app {
-      flex: 1 0 auto;
-    }
-
-    .title {
-      color: #333;
-      margin: 0 0 10px;
-    }
-
-    .title--h1 {
-      font-size: 26px;
-      font-weight: 700;
-      margin-top: 20px;
-      color: #1a73e8;
-    }
-
-    .title--h2 {
-      font-size: 22px;
-      font-weight: 700;
-      margin-top: 20px;
-    }
-
-    .paragraph {
-      color: #555;
-      font-size: 16px;
-      line-height: 24px;
-      margin: 0 0 10px;
-    }
-
-    .header {
-      background: #fff;
-      border-bottom: 1px solid #e5e5e5;
-      text-align: center;
-      height: 60px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
-    }
-
-    .header__title {
-      font-size: 20px;
-      font-weight: bold;
-      color: #333;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-
-    .content {
-      box-sizing: border-box;
-      margin: 0 auto;
-      max-width: 720px;
-      padding: 20px;
-    }
-
-    .prize-picker {
-      display: flex;
-      justify-content: center;
-      gap: 10px;
-      margin: 30px auto;
-    }
-
-    .prize-picker__image {
-      margin: 0 auto;
-      max-width: 100%;
-      display: block;
-    }
-
-    .prize-picker__image--placeholder {
-      animation: chest 1s infinite;
-      transform-origin: bottom;
-    }
-
-    .prize-picker__option {
-      background: #fff;
-      border-radius: 10px;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, .1);
-      box-sizing: border-box;
-      display: block;
-      width: 32%;
-      overflow: hidden;
-      padding: 10px;
-      cursor: pointer;
-      transition: transform 0.2s;
-    }
-
-    .prize-picker__option:active {
-      transform: scale(0.95);
-    }
-
-    .prize {
-      text-align: center;
-    }
-
-    .prize__image {
-      max-height: 200px;
-      margin-bottom: 20px;
-    }
-
-    .prize__name {
-      margin-bottom: 10px;
-      font-size: 24px;
-      font-weight: bold;
-      color: #34a853;
-    }
-
-    .prize__button {
-      background: #22c55e;
-      border-bottom: 4px solid #15803d;
-      border-radius: 8px;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, .1);
-      color: #fff;
-      display: inline-block;
-      height: 56px;
-      line-height: 52px;
-      margin-top: 20px;
-      padding: 0 30px;
-      text-align: center;
-      text-decoration: none;
-      text-transform: uppercase;
-      font-weight: 800;
-      font-size: 18px;
-      width: 100%;
-      max-width: 320px;
-      transition: all 0.2s;
-    }
-
-    .prize__button:hover {
-      background: #16a34a;
-      transform: translateY(-2px);
-    }
-
-    .prize__button:active {
-      border-bottom-width: 0;
-      transform: translateY(4px);
-    }
-
-    .loader {
-      align-items: center;
-      background-color: rgba(255, 255, 255, 0.9);
-      bottom: 0;
-      display: flex;
-      justify-content: center;
-      left: 0;
-      position: fixed;
-      right: 0;
-      top: 0;
-      z-index: 100;
-    }
-
-    .loader__dual-ring {
-      display: inline-block;
-      width: 64px;
-      height: 64px;
-    }
-
-    .loader__dual-ring:after {
-      content: " ";
-      display: block;
-      width: 46px;
-      height: 46px;
-      margin: 8px;
-      border-radius: 50%;
-      border: 5px solid #1a73e8;
-      border-color: #1a73e8 transparent #1a73e8 transparent;
-      animation: loader-dual-ring 1.2s linear infinite;
-    }
-
-    .footer {
-      background-color: #f8f9fa;
-      border-top: 1px solid #e5e5e5;
-      padding: 20px;
-      text-align: center;
-      font-size: 11px;
-      color: #888;
-      margin-top: auto;
-    }
-
-    .footer-links a {
-      color: #555;
-      text-decoration: none;
-      margin: 0 8px;
-    }
-
-    .footer-links a:hover {
-      text-decoration: underline;
-    }
-
-    @keyframes loader-dual-ring {
-      0% {
-        transform: rotate(0deg);
+    <style>
+      /* ... CSS 样式 ... */
+      html {
+        height: 100%;
       }
 
-      100% {
-        transform: rotate(360deg);
-      }
-    }
-
-    @keyframes chest {
-      0% {
-        transform: scale(1);
-      }
-
-      50% {
-        transform: scale(1.05, 0.97);
+      body {
+        background: #fbfbfb;
+        background-attachment: fixed;
+        color: #000;
+        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+        font-size: 13px;
+        margin: 0;
+        min-height: 100%;
+        display: flex;
+        flex-direction: column;
       }
 
-      100% {
-        transform: scale(1);
+      main#app {
+        flex: 1 0 auto;
       }
-    }
 
-    [v-cloak] {
-      display: none;
-    }
-  </style>
-</head>
+      .title {
+        color: #333;
+        margin: 0 0 10px;
+      }
 
-<body>
-  <main id="app" v-cloak>
-    <div class="header">
-      <div class="header__title">
-        🏆 Prize Center
-      </div>
-    </div>
+      .title--h1 {
+        font-size: 26px;
+        font-weight: 700;
+        margin-top: 20px;
+        color: #1a73e8;
+      }
 
-    <div class="content">
-      <div v-if="!showPrize">
-        <h1 class="title title--h1" style="text-align: center;">Congratulations!</h1>
-        <p class="paragraph" style="text-align: center;">
-          You have been selected for the opportunity to win <span style="font-weight: bold; color: #34a853;">$1,000
-            Walmart Gift Card</span>
-        </p>
-        <p class="paragraph" style="text-align: center;">
-          Choose a treasure box and see if you're lucky!
-        </p>
+      .title--h2 {
+        font-size: 22px;
+        font-weight: 700;
+        margin-top: 20px;
+      }
 
-        <div class="prize-picker">
-          <div class="prize-picker__option" @click="selectBox(1)">
-            <img v-if="selected !== 1" key="chest-1" src="chest.jpg"
-              class="prize-picker__image prize-picker__image--placeholder" alt="Chest">
-            <img v-else key="cash-1" src="cash.jpg" class="prize-picker__image" alt="Cash">
-          </div>
+      .paragraph {
+        color: #555;
+        font-size: 16px;
+        line-height: 24px;
+        margin: 0 0 10px;
+      }
 
-          <div class="prize-picker__option" @click="selectBox(2)">
-            <img v-if="selected !== 2" key="chest-2" src="chest.jpg"
-              class="prize-picker__image prize-picker__image--placeholder" alt="Chest">
-            <img v-else key="cash-2" src="cash.jpg" class="prize-picker__image" alt="Cash">
-          </div>
+      .header {
+        background: #fff;
+        border-bottom: 1px solid #e5e5e5;
+        text-align: center;
+        height: 60px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+      }
 
-          <div class="prize-picker__option" @click="selectBox(3)">
-            <img v-if="selected !== 3" key="chest-3" src="chest.jpg"
-              class="prize-picker__image prize-picker__image--placeholder" alt="Chest">
-            <img v-else key="cash-3" src="cash.jpg" class="prize-picker__image" alt="Cash">
-          </div>
-        </div>
-      </div>
+      .header__title {
+        font-size: 20px;
+        font-weight: bold;
+        color: #333;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
 
-      <div class="prize" v-else>
-        <h2 class="title title--h2">Your reward</h2>
-        <img class="prize__image" src="cash.jpg" alt="Prize">
+      .content {
+        box-sizing: border-box;
+        margin: 0 auto;
+        max-width: 720px;
+        padding: 20px;
+      }
 
-        <div class="prize__name">
-          $1,000 Walmart Gift Card
-        </div>
-        <p class="paragraph"> Congratulations! You win a $1,000 Gift Card </p>
-        <p class="paragraph">
-          Complete the steps on the next page to claim your prize
-        </p>
+      .prize-picker {
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+        margin: 30px auto;
+      }
 
-        <a class="prize__button" href="https://www.1timetowin.xyz/click"
-          onclick="typeof fbq==='function'&&fbq('track','CompleteRegistration');">Accept the award</a>
-      </div>
-    </div>
+      .prize-picker__image {
+        margin: 0 auto;
+        max-width: 100%;
+        display: block;
+      }
 
-    <div class="loader" v-show="loading">
-      <div class="loader__dual-ring"></div>
-      <div style="margin-left: 15px; font-weight: bold; color: #555;">Checking Eligibility...</div>
-    </div>
-  </main>
+      .prize-picker__image--placeholder {
+        animation: chest 1s infinite;
+        transform-origin: bottom;
+      }
 
-  <footer class="footer">
-    <div class="footer-links">
-      <a href="#">Privacy Policy</a> |
-      <a href="#">Terms of Service</a> |
-      <a href="#">Contact Us</a>
-    </div>
-    <p>
-      This site is not a part of the Facebook website or Facebook Inc. Additionally, This site is NOT endorsed by
-      Facebook in any way. FACEBOOK is a trademark of FACEBOOK, Inc.
-    </p>
-    <p>&copy; 2025 Prize Center. All Rights Reserved.</p>
-  </footer>
+      .prize-picker__option {
+        background: #fff;
+        border-radius: 10px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        box-sizing: border-box;
+        display: block;
+        width: 32%;
+        overflow: hidden;
+        padding: 10px;
+        cursor: pointer;
+        transition: transform 0.2s;
+      }
 
-  <script>
-    new Vue({
-      el: '#app',
-      data: {
-        selected: null,
-        loading: false,
-        showPrize: false
-      },
-      watch: {
-        selected: function (val) {
-          if (!val) return;
-          var vm = this;
+      .prize-picker__option:active {
+        transform: scale(0.95);
+      }
 
-          // 关键修改: 将等待时间延长至 3.5 秒 (3500ms)
-          // 这给了 MaxConv 脚本足够的时间在后台加载和写入 Cookie
-          setTimeout(function () {
-            vm.showPrize = true;
-            vm.loading = false;
+      .prize {
+        text-align: center;
+      }
 
-            vm.$nextTick(function () {
-              window.scrollTo(0, 0);
-              vm.startConfetti();
-            });
-          }, 3500); // <--- 改为 3500
+      .prize__image {
+        max-height: 200px;
+        margin-bottom: 20px;
+      }
+
+      .prize__name {
+        margin-bottom: 10px;
+        font-size: 24px;
+        font-weight: bold;
+        color: #34a853;
+      }
+
+      .prize__button {
+        background: #22c55e;
+        border-bottom: 4px solid #15803d;
+        border-radius: 8px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        color: #fff;
+        display: inline-block;
+        height: 56px;
+        line-height: 52px;
+        margin-top: 20px;
+        padding: 0 30px;
+        text-align: center;
+        text-decoration: none;
+        text-transform: uppercase;
+        font-weight: 800;
+        font-size: 18px;
+        width: 100%;
+        max-width: 320px;
+        transition: all 0.2s;
+      }
+
+      .prize__button:hover {
+        background: #16a34a;
+        transform: translateY(-2px);
+      }
+
+      .prize__button:active {
+        border-bottom-width: 0;
+        transform: translateY(4px);
+      }
+
+      .loader {
+        align-items: center;
+        background-color: rgba(255, 255, 255, 0.9);
+        bottom: 0;
+        display: flex;
+        justify-content: center;
+        left: 0;
+        position: fixed;
+        right: 0;
+        top: 0;
+        z-index: 100;
+      }
+
+      .loader__dual-ring {
+        display: inline-block;
+        width: 64px;
+        height: 64px;
+      }
+
+      .loader__dual-ring:after {
+        content: " ";
+        display: block;
+        width: 46px;
+        height: 46px;
+        margin: 8px;
+        border-radius: 50%;
+        border: 5px solid #1a73e8;
+        border-color: #1a73e8 transparent #1a73e8 transparent;
+        animation: loader-dual-ring 1.2s linear infinite;
+      }
+
+      .footer {
+        background-color: #f8f9fa;
+        border-top: 1px solid #e5e5e5;
+        padding: 20px;
+        text-align: center;
+        font-size: 11px;
+        color: #888;
+        margin-top: auto;
+      }
+
+      .footer-links a {
+        color: #555;
+        text-decoration: none;
+        margin: 0 8px;
+      }
+
+      .footer-links a:hover {
+        text-decoration: underline;
+      }
+
+      @keyframes loader-dual-ring {
+        0% {
+          transform: rotate(0deg);
         }
-      },
-      methods: {
-        selectBox(id) {
-          if (this.selected) return;
-          this.selected = id;
-          this.loading = true;
+
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+
+      @keyframes chest {
+        0% {
+          transform: scale(1);
+        }
+
+        50% {
+          transform: scale(1.05, 0.97);
+        }
+
+        100% {
+          transform: scale(1);
+        }
+      }
+
+      [v-cloak] {
+        display: none;
+      }
+    </style>
+  </head>
+
+  <body>
+    <main id="app" v-cloak>
+      <div class="header">
+        <div class="header__title">🏆 Prize Center</div>
+      </div>
+
+      <div class="content">
+        <div v-if="!showPrize">
+          <h1 class="title title--h1" style="text-align: center">Congratulations!</h1>
+          <p class="paragraph" style="text-align: center">
+            You have been selected for the opportunity to win
+            <span style="font-weight: bold; color: #34a853">$1,000 Walmart Gift Card</span>
+          </p>
+          <p class="paragraph" style="text-align: center">Choose a treasure box and see if you're lucky!</p>
+
+          <div class="prize-picker">
+            <div class="prize-picker__option" @click="selectBox(1)">
+              <img
+                v-if="selected !== 1"
+                key="chest-1"
+                src="chest.jpg"
+                class="prize-picker__image prize-picker__image--placeholder"
+                alt="Chest" />
+              <img v-else key="cash-1" src="cash.jpg" class="prize-picker__image" alt="Cash" />
+            </div>
+
+            <div class="prize-picker__option" @click="selectBox(2)">
+              <img
+                v-if="selected !== 2"
+                key="chest-2"
+                src="chest.jpg"
+                class="prize-picker__image prize-picker__image--placeholder"
+                alt="Chest" />
+              <img v-else key="cash-2" src="cash.jpg" class="prize-picker__image" alt="Cash" />
+            </div>
+
+            <div class="prize-picker__option" @click="selectBox(3)">
+              <img
+                v-if="selected !== 3"
+                key="chest-3"
+                src="chest.jpg"
+                class="prize-picker__image prize-picker__image--placeholder"
+                alt="Chest" />
+              <img v-else key="cash-3" src="cash.jpg" class="prize-picker__image" alt="Cash" />
+            </div>
+          </div>
+        </div>
+
+        <div class="prize" v-else>
+          <h2 class="title title--h2">Your reward</h2>
+          <img class="prize__image" src="cash.jpg" alt="Prize" />
+
+          <div class="prize__name">$1,000 Walmart Gift Card</div>
+          <p class="paragraph">Congratulations! You win a $1,000 Gift Card</p>
+          <p class="paragraph">Complete the steps on the next page to claim your prize</p>
+
+          <a class="prize__button" href="https://www.1timetowin.xyz/click">Accept the award</a>
+        </div>
+      </div>
+
+      <div class="loader" v-show="loading">
+        <div class="loader__dual-ring"></div>
+        <div style="margin-left: 15px; font-weight: bold; color: #555">Checking Eligibility...</div>
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-links">
+        <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a> |
+        <a href="#">Contact Us</a>
+      </div>
+      <p>
+        This site is not a part of the Facebook website or Facebook Inc. Additionally, This site is NOT endorsed by
+        Facebook in any way. FACEBOOK is a trademark of FACEBOOK, Inc.
+      </p>
+      <p>&copy; 2025 Prize Center. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+      new Vue({
+        el: "#app",
+        data: {
+          selected: null,
+          loading: false,
+          showPrize: false,
         },
-        startConfetti() {
-          var end = Date.now() + 3000;
-          var colors = ["#FFD700", "#22c55e", "#3b82f6", "#ef4444"];
+        watch: {
+          selected: function (val) {
+            if (!val) return;
+            var vm = this;
 
-          (function frame() {
-            if (typeof confetti === 'function') {
-              confetti({
-                particleCount: 3,
-                angle: 60,
-                spread: 55,
-                origin: { x: 0 },
-                colors: colors
+            // 关键修改: 将等待时间延长至 3.5 秒 (3500ms)
+            // 这给了 MaxConv 脚本足够的时间在后台加载和写入 Cookie
+            setTimeout(function () {
+              vm.showPrize = true;
+              vm.loading = false;
+
+              vm.$nextTick(function () {
+                window.scrollTo(0, 0);
+                vm.startConfetti();
               });
-              confetti({
-                particleCount: 3,
-                angle: 120,
-                spread: 55,
-                origin: { x: 1 },
-                colors: colors
-              });
-            }
+            }, 3500); // <--- 改为 3500
+          },
+        },
+        methods: {
+          selectBox(id) {
+            if (this.selected) return;
+            this.selected = id;
+            this.loading = true;
+          },
+          startConfetti() {
+            var end = Date.now() + 3000;
+            var colors = ["#FFD700", "#22c55e", "#3b82f6", "#ef4444"];
 
-            if (Date.now() < end) {
-              requestAnimationFrame(frame);
-            }
-          }());
-        }
-      }
-    });
-  </script>
-</body>
+            (function frame() {
+              if (typeof confetti === "function") {
+                confetti({
+                  particleCount: 3,
+                  angle: 60,
+                  spread: 55,
+                  origin: { x: 0 },
+                  colors: colors,
+                });
+                confetti({
+                  particleCount: 3,
+                  angle: 120,
+                  spread: 55,
+                  origin: { x: 1 },
+                  colors: colors,
+                });
+              }
 
+              if (Date.now() < end) {
+                requestAnimationFrame(frame);
+              }
+            })();
+          },
+        },
+      });
+    </script>
+  </body>
 </html>
